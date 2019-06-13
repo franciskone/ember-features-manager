@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { redirections } from 'ember-features-manager/utils/feature-flags';
 
 export default Route.extend({
 	// actions: {
