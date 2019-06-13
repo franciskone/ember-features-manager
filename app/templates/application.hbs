@@ -1,5 +1,23 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<FeatureWrapper @feature="welcome" @customer="customerA">
+    <h1>Welcome to {{appName}}</h1>
+</FeatureWrapper>
+
+<FeatureWrapper @feature="news">
+    <ul>
+        <li>News 1</li>
+        <li>News 2</li>
+        <li>News 3</li>
+    </ul>
+</FeatureWrapper>
+
+{{#link-to "page-a"}}
+    Page A
+{{/link-to}}
+{{#link-to "page-b"}}
+    Page B
+{{/link-to}}
+{{#link-to "page-c"}}
+    Page C
+{{/link-to}}
 
 {{outlet}}
