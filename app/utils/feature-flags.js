@@ -11,8 +11,8 @@ export const featuresFlags = {
   // this object will map the ENV flags into Front-end specific flags
   // this way we can split / merge ENV flags into different Front end flags
 
-  [WELCOME]: true,
-  [NEWS]: false,
+  [WELCOME]: false,
+  [NEWS]: true,
 };
 
 export const featurePages = {
