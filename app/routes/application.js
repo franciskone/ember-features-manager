@@ -1,14 +1,20 @@
 import Route from '@ember/routing/route';
-import { redirections } from 'ember-features-manager/utils/feature-flags';
+import { getRedirectRoute } from 'ember-features-manager/utils/feature-flags';
 
 export default Route.extend({
-	// actions: {
-	//   willTransition(transition) {
-	//     redirections[transition.from.name].feature
-	//     if (this.controller.get('userHasEnteredData')) {
-	//       this.controller.displayNavigationConfirm();
-	//       transition.abort();
-	//     }
-	//   }
-	// }
+	beforeModel(transition) {
+		this._redirectOnMissingFeatures(transition);
+	},
+
+	actions: {
+	  willTransition(transition) {
+	  	this._redirectOnMissingFeatures(transition);
+	  }
+	},
+
+	_redirectOnMissingFeatures(transition) {
+		const newRouteName = transition.to.name;
+		const redirectRoute = getRedirectRoute(newRouteName);
+		redirectRoute && this.transitionTo(redirectRoute.routeName);
+	}
 });

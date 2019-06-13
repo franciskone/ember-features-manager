@@ -1,23 +1,17 @@
-<FeatureWrapper @feature="welcome" @customer="customerA">
-    <h1>Welcome to {{appName}}</h1>
-</FeatureWrapper>
+<ul>
+	<FeatureWrapper @feature="news">
+		<li>
+			{{link-to "Welcome Page (page-a)" "page-a"}}
+		</li>
+	</FeatureWrapper>
 
-<FeatureWrapper @feature="news">
-    <ul>
-        <li>News 1</li>
-        <li>News 2</li>
-        <li>News 3</li>
-    </ul>
-</FeatureWrapper>
+	<FeatureWrapper @feature="news">
+		<li>
+			{{link-to "News Page (page-b)" "page-b"}}
+		</li>
+	</FeatureWrapper>
 
-{{#link-to "page-a"}}
-    Page A
-{{/link-to}}
-{{#link-to "page-b"}}
-    Page B
-{{/link-to}}
-{{#link-to "page-c"}}
-    Page C
-{{/link-to}}
+	<li>{{link-to "Page C" "page-c"}}</li>
+</ul>
 
 {{outlet}}
