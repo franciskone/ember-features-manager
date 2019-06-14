@@ -1,8 +1,71 @@
-# ember-features-manager
+# Project related instructions
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a test application to implement feature/platform driven app configuration.
 
+## `config/environment.js` redirect config page
+example
+```
+let ENV = {
+    APP: {
+        PLATFORM_CODE: process.env.PLATFORM_CODE || 'EARTH',
+        FEATURE_NEWS: true
+    }
+};
+```
+in `ENV` you can set PLATFORM and FEATURES Envs.
+
+
+
+## `app/utils/feature-flags.js` redirect config page
+this file is used to implement your custom featureFlags management.
+
+### `FEATURES`
+in `FEATURES` object you can add all the feature names you need.
+
+### `featuresFlags`
+`featuresFlags` object maps the ENV flags into Front-end specific flags; this way we can split / merge ENV flags based on the application needs.
+
+### `featurePages`
+In `featurePages` object you can add configurations for pages redirect.
+
+example: 
+```
+const featurePages = {
+  'page-a': {
+    features: [FEATURES.WELCOME], // list of feature that allow the page to be shown
+    redirectRoute: { // Redirect route in case of FALSE feature flags
+      routeName: "page-c",
+    }
+  },
+  'page-b': {
+    features: [FEATURES.FEATURE_NEWS],
+    redirectRoute: {
+      routeName: "page-d",
+    }
+  }
+};
+```
+
+for each property:
+
+* `property key`: Use page names as key properties
+* `features`: add an array of allowed features
+* `redirectRoute`: add an object containing all the data needed to do a proper redirect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Ember standard README.md
 ## Prerequisites
 
 You will need the following things properly installed on your computer.

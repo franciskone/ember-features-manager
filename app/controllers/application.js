@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import ENV from 'ember-features-manager/config/environment';
+import { FEATURES } from 'ember-features-manager/utils/feature-flags';
 
 export default Controller.extend({
 	init(...args) {

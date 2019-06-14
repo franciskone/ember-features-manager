@@ -4,10 +4,11 @@ const WELCOME = 'welcome';
 const NEWS = 'news';
 
 // Front End specific feature flags
-export const FEATURES = {
+const FEATURES = {
   WELCOME,
   NEWS,
 };
+export default FEATURES;
 
 export const featuresFlags = {
   // this object will map the ENV flags into Front-end specific flags
