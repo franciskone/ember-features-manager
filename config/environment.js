@@ -18,8 +18,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      PLATFORM_CODE: 'CODE_ONE',
+      NEWS: true
     }
   };
 

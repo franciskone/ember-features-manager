@@ -1,3 +1,5 @@
+import ENV from 'ember-features-manager/config/environment';
+
 const WELCOME = 'welcome';
 const NEWS = 'news';
 
@@ -11,8 +13,8 @@ export const featuresFlags = {
   // this object will map the ENV flags into Front-end specific flags
   // this way we can split / merge ENV flags into different Front end flags
 
-  [WELCOME]: true,
-  [NEWS]: true,
+  [WELCOME]: ENV.APP.PLATFORM_CODE === 'CODE_ONE',
+  [NEWS]: ENV.APP.NEWS,
 };
 
 export const featurePages = {
@@ -31,13 +33,19 @@ export const featurePages = {
 };
 
 export function getRedirectRoute(routeName) {
-  // this is a basic implementation that enable the page only if all the feature flags are TRUE
-  // in case of redirect it return the redirectRoute object, otherwise it returns NULL
+  // this is a basic implementation that enable the page if at least one of the feature flags is TRUE
+  // in case of redirect it returns the redirectRoute object, otherwise it returns NULL
 
-  // the actual redirect implementation logic needs to be defined
+  // !!! THE ACTUAL REDIRECT IMPLEMENTATION LOGIC NEEDS TO BE DEFINED !!!
 
   const featurePage = featurePages[routeName];
-  return featurePage && !featurePage.features.every(featureName => featuresFlags[featureName])
+  return featurePage && !featurePage.features.some(featureName => featuresFlags[featureName])
     ? featurePage.redirectRoute
     : null;
+}
+
+export function shouldShowSection(features) {
+  return Array.isArray(features)
+    ? features.some(feature => featuresFlags[feature])
+    : featuresFlags[features];
 }
