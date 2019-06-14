@@ -1,3 +1,11 @@
+<h2>ENVS</h2>
+<ul>
+	{{#each appEnvs as |env|}}
+		<li>{{env.flag}}: <strong>{{env.value}}</strong></li>
+	{{/each}}
+</ul>
+
+<h2>PAGES</h2>
 <ul>
 	<FeatureWrapper @features="welcome">
 		<li>

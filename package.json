@@ -15,6 +15,8 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
+    "start:venus": "PLATFORM_CODE=VENUS ember s --port=4201",
+    "start:moon": "PLATFORM_CODE=MOON ember s --port=4202",
     "test": "ember test"
   },
   "devDependencies": {

@@ -18,8 +18,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      PLATFORM_CODE: 'CODE_ONE',
-      NEWS: true
+      PLATFORM_CODE: process.env.PLATFORM_CODE || 'EARTH',
+      FEATURE_NEWS: true
     }
   };
 

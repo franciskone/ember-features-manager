@@ -13,8 +13,8 @@ export const featuresFlags = {
   // this object will map the ENV flags into Front-end specific flags
   // this way we can split / merge ENV flags into different Front end flags
 
-  [WELCOME]: ENV.APP.PLATFORM_CODE === 'CODE_ONE',
-  [NEWS]: ENV.APP.NEWS,
+  [WELCOME]: Array('EARTH', 'MOON').includes(ENV.APP.PLATFORM_CODE),
+  [NEWS]: ENV.APP.FEATURE_NEWS,
 };
 
 export const featurePages = {
@@ -25,9 +25,9 @@ export const featurePages = {
     }
   },
   'page-b': {
-    features: [FEATURES.NEWS],
+    features: [FEATURES.FEATURE_NEWS],
     redirectRoute: {
-      routeName: "page-c",
+      routeName: "page-d",
     }
   }
 };
