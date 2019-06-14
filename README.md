@@ -2,7 +2,7 @@
 
 This is a test application to implement feature/platform driven app configuration.
 
-## `config/environment.js` redirect config page
+#### config/environment.js
 example
 ```
 let ENV = {
@@ -16,16 +16,32 @@ in `ENV` you can set PLATFORM and FEATURES Envs.
 
 
 
-## `app/utils/feature-flags.js` redirect config page
+#### app/utils/feature-flags.js
 this file is used to implement your custom featureFlags management.
 
-### `FEATURES`
+##### FEATURES
 in `FEATURES` object you can add all the feature names you need.
 
-### `featuresFlags`
+example: 
+```
+const FEATURES = {
+    WELCOME,
+    NEWS,
+};
+```
+
+##### featuresFlags
 `featuresFlags` object maps the ENV flags into Front-end specific flags; this way we can split / merge ENV flags based on the application needs.
 
-### `featurePages`
+example: 
+```
+const featuresFlags = {
+    [WELCOME]: Array('EARTH', 'MOON').includes(ENV.APP.PLATFORM_CODE),
+    [NEWS]: ENV.APP.FEATURE_NEWS,
+};
+```
+
+##### featurePages
 In `featurePages` object you can add configurations for pages redirect.
 
 example: 
