@@ -7,13 +7,13 @@
 
 <h2>PAGES</h2>
 <ul>
-	<FeatureWrapper @features="welcome">
+	<FeatureWrapper @features={{featureFlags.FEATURES.WELCOME}}>
 		<li>
 			{{link-to "Welcome Page (page-a)" "page-a"}}
 		</li>
 	</FeatureWrapper>
 
-	<FeatureWrapper @features="news">
+	<FeatureWrapper @features={{featureFlags.FEATURES.NEWS}}>
 		<li>
 			{{link-to "News Page (page-b)" "page-b"}}
 		</li>

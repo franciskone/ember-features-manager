@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
-import { getRedirectRoute } from 'ember-features-manager/utils/feature-flags';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+	featureFlags: service(),
+
 	beforeModel(transition) {
 		this._redirectOnMissingFeatures(transition);
 	},
@@ -14,7 +16,7 @@ export default Route.extend({
 
 	_redirectOnMissingFeatures(transition) {
 		const newRouteName = transition.to.name;
-		const redirectRoute = getRedirectRoute(newRouteName);
+		const redirectRoute = this.featureFlags.getRedirectRoute(newRouteName);
 		redirectRoute && this.transitionTo(redirectRoute.routeName);
 	}
 });
