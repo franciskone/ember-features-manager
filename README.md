@@ -16,7 +16,7 @@ in `ENV` you can set PLATFORM and FEATURES Envs.
 
 
 
-#### app/utils/feature-flags.js
+#### app/services/feature-flags.js
 this file is used to implement your custom featureFlags management.
 
 ##### FEATURES
